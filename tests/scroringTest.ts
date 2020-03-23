@@ -39,6 +39,12 @@ describe('scoring is accurate for', function() {
     using('A', 'B', 2, 1, 'thirty-fifteen for A').
     using('A', 'B', 3, 1, 'fourty-fifteen for A').
     using('A', 'B', 3, 2, 'fourty-thirty for A').
+    using('A', 'B', 0, 1, 'fifteen-love for B').
+    using('A', 'B', 0, 2, 'thirty-love for B').
+    using('A', 'B', 0, 3, 'fourty-love for B').
+    using('A', 'B', 1, 2, 'thirty-fifteen for B').
+    using('A', 'B', 1, 3, 'fourty-fifteen for B').
+    using('A', 'B', 2, 3, 'fourty-thirty for B').
         it('one player has more score up to 40', function(playerOne, playerTwo, scorePlayerOne, scorePlayerTwo, expectedScoring) {
             //arrange
             let game = new TennisGame(playerOne, playerTwo);
