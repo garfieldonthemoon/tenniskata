@@ -25,14 +25,21 @@ export class TennisGame {
 
     public getScoring(): string {
         if (this.scorePlayerOne != this.scorePlayerTwo) {
-            if (this.scorePlayerOne > 3 || this.scorePlayerTwo > 3)
-                return `advantage for ${this.scorePlayerOne > this.scorePlayerTwo ? this.playerOne : this.playerTwo}`;
             return this.scorePlayerOne > this.scorePlayerTwo 
-                ? `${this.scoreMap[this.scorePlayerOne]}-${this.scoreMap[this.scorePlayerTwo]} for ${this.playerOne}`
-                : `${this.scoreMap[this.scorePlayerTwo]}-${this.scoreMap[this.scorePlayerOne]} for ${this.playerTwo}`;
+                ? this.getScoreDescriptionForNonEqualScores(this.scorePlayerOne, this.scorePlayerTwo, this.playerOne)
+                : this.getScoreDescriptionForNonEqualScores(this.scorePlayerTwo, this.scorePlayerOne, this.playerTwo);
         }
         if (this.scorePlayerOne >= 3)
             return 'deuce';
         return `${this.scoreMap[this.scorePlayerOne]}-all`;
+    }
+
+    private getScoreDescriptionForNonEqualScores(higherScore: number, lowerScore: number, higherScorePlayer: string): string {
+        let scoreDescription =
+            higherScore > 3
+                ? 'advantage'
+                : `${this.scoreMap[higherScore]}-${this.scoreMap[lowerScore]}`;
+
+        return `${scoreDescription} for ${higherScorePlayer}`;
     }
 }
