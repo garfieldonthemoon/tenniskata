@@ -9,6 +9,7 @@ export class TennisGame {
     playerTwo: string;
     scorePlayerOne: number = 0;
     scorePlayerTwo: number = 0;
+    isGameFinished: boolean = false;
 
     constructor(playerOne: string, playerTwo: string) {
         this.playerOne = playerOne;
@@ -32,6 +33,12 @@ export class TennisGame {
             return this.scorePlayerOne >= 3
                 ? 'deuce'
                 : `${this.scoreMap[this.scorePlayerOne]}-all`;
+        }
+    }
+    public getWinStatus(): {isFinished: boolean, message: string} {
+        return {
+            "isFinished": this.isGameFinished,
+            "message": "game is on"
         }
     }
 
