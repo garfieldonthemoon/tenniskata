@@ -57,6 +57,24 @@ describe('scoring is accurate for', function() {
             expect(result).toBe(expectedScoring);
         });
 
+    using('A', 'B', 4, 3, 'advantage for A').
+    using('A', 'B', 5, 4, 'advantage for A').
+    using('A', 'B', 24, 23, 'advantage for A').
+    using('A', 'B', 3, 4, 'advantage for B').
+    using('A', 'B', 4, 5, 'advantage for B').
+    using('A', 'B', 23, 24, 'advantage for B').
+        it('one player has more score above 40 (but game not finished yet)', function(playerOne, playerTwo, scorePlayerOne, scorePlayerTwo, expectedScoring) {
+            //arrange
+            let game = new TennisGame(playerOne, playerTwo);
+            setScores(game, scorePlayerOne, scorePlayerTwo);
+
+            //act
+            let result = game.getScoring();
+
+            //assert
+            expect(result).toBe(expectedScoring);
+        });
+
     function setScores(game: TennisGame, scorePlayerOne: number, scorePlayerTwo: number) {
         for (let i = 0; i < scorePlayerOne; i++) {
             game.ballForPlayerOne();

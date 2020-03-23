@@ -25,6 +25,8 @@ export class TennisGame {
 
     public getScoring(): string {
         if (this.scorePlayerOne != this.scorePlayerTwo) {
+            if (this.scorePlayerOne > 3 || this.scorePlayerTwo > 3)
+                return `advantage for ${this.scorePlayerOne > this.scorePlayerTwo ? this.playerOne : this.playerTwo}`;
             return this.scorePlayerOne > this.scorePlayerTwo 
                 ? `${this.scoreMap[this.scorePlayerOne]}-${this.scoreMap[this.scorePlayerTwo]} for ${this.playerOne}`
                 : `${this.scoreMap[this.scorePlayerTwo]}-${this.scoreMap[this.scorePlayerOne]} for ${this.playerTwo}`;
