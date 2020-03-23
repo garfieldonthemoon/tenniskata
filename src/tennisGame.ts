@@ -10,6 +10,7 @@ export class TennisGame {
     scorePlayerOne: number = 0;
     scorePlayerTwo: number = 0;
     isGameFinished: boolean = false;
+    winner: string;
 
     constructor(playerOne: string, playerTwo: string) {
         this.playerOne = playerOne;
@@ -18,10 +19,12 @@ export class TennisGame {
 
     public ballForPlayerOne() {
         this.scorePlayerOne++;
+        this.checkIsGameWon();
     }
 
     public ballForPlayerTwo() {
         this.scorePlayerTwo++;
+        this.checkIsGameWon();
     }
 
     public getScoring(): string {
@@ -38,7 +41,7 @@ export class TennisGame {
     public getWinStatus(): {isFinished: boolean, message: string} {
         return {
             "isFinished": this.isGameFinished,
-            "message": "game is on"
+            "message": this.isGameFinished ? `${this.winner} won` : "game is on"
         }
     }
 
@@ -49,5 +52,17 @@ export class TennisGame {
                 : `${this.scoreMap[higherScore]}-${this.scoreMap[lowerScore]}`;
 
         return `${scoreDescription} for ${higherScorePlayer}`;
+    }
+
+    private checkIsGameWon() {
+        let scoreDifference = this.scorePlayerOne - this.scorePlayerTwo;
+
+        if (scoreDifference >= 2 && this.scorePlayerOne >= 4) {
+            this.isGameFinished = true;
+            this.winner = this.playerOne;
+        } else if (scoreDifference <= -2 && this.scorePlayerTwo >= 4) {
+            this.isGameFinished = true;
+            this.winner = this.playerTwo;
+        }
     }
 }

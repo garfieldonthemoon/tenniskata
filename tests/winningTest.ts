@@ -24,4 +24,20 @@ describe('winning status is determined correctly', function() {
             expect(result.isFinished).toBe(expectedWinStatus);
             expect(result.message).toBe(expectedWinMessage);
         });
+
+    using('A', 'B', 4, 0, true, 'A won').
+        it('if game is won',
+            (playerOne: string, playerTwo: string, scorePlayerOne: number, scorePlayerTwo: number, expectedWinStatus: boolean, expectedWinMessage: string) => 
+        {
+            //arrange
+            let game = new TennisGame(playerOne, playerTwo);
+            GameSetupHelper.setScoreForGame(game, scorePlayerOne, scorePlayerTwo);
+
+            //act
+            let result = game.getWinStatus();
+
+            //assert
+            expect(result.isFinished).toBe(expectedWinStatus);
+            expect(result.message).toBe(expectedWinMessage);
+        });
 });
