@@ -4,13 +4,18 @@ export class TennisGame {
         15: "fifteen",
         30: "thirty"
     };
-    score: number;
+    scorePlayerLeft: number;
+    scorePlayerRight: number;
 
-    public setScore(newScore: number) {
-        this.score = newScore;
+    public setScorePlayerLeft(newScore: number) {
+        this.scorePlayerLeft = newScore;
+    }
+
+    public setScorePlayerRight(newScore: number) {
+        this.scorePlayerRight = newScore;
     }
 
     public getScoring(): string {
-        return `${this.scoreMap[this.score]}-all`;
+        return `${this.scoreMap[this.scorePlayerLeft]}-all`;
     }
 }

@@ -8,7 +8,7 @@ describe('scoring is accurate for', function() {
         it('equal scores up to 30', function(scorePlayerLeft, scorePlayerRight, expectedScoring) {
             //arrange
             let game = new TennisGame();
-            game.setScore(scorePlayerLeft);
+            game.setScorePlayerLeft(scorePlayerLeft);
 
             //act
             let result = game.getScoring();
