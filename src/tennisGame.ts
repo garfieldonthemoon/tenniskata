@@ -5,8 +5,15 @@ export class TennisGame {
         "thirty",
         "fourty"
     ];
+    playerOne: string;
+    playerTwo: string;
     scorePlayerOne: number = 0;
     scorePlayerTwo: number = 0;
+
+    constructor(playerOne: string, playerTwo: string) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+    }
 
     public ballForPlayerOne() {
         this.scorePlayerOne++;
@@ -18,7 +25,7 @@ export class TennisGame {
 
     public getScoring(): string {
         if (this.scorePlayerOne != this.scorePlayerTwo) {
-            return `${this.scoreMap[this.scorePlayerOne]}-${this.scoreMap[this.scorePlayerTwo]}`;
+            return `${this.scoreMap[this.scorePlayerOne]}-${this.scoreMap[this.scorePlayerTwo]} for ${this.scorePlayerOne>this.scorePlayerTwo?this.playerOne:this.playerTwo}`;
         }
         if (this.scorePlayerOne >= 3)
             return 'deuce';
