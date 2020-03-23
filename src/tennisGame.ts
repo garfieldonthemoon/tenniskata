@@ -1,7 +1,8 @@
 export class TennisGame {
     scoreMap: { [id: number]: string } = {
         0: "love",
-        15: "fifteen"
+        15: "fifteen",
+        30: "thirty"
     };
     score: number;
 
