@@ -1,5 +1,6 @@
 import { TennisGame } from "../src/tennisGame";
 import { using } from "jasmine-test-cases";
+import { GameSetupHelper } from "../tests/gameSetupHelper";
 
 describe('scoring is accurate for', function() {
     using('A', 'B', 0, 0, 'love-all').
@@ -8,7 +9,7 @@ describe('scoring is accurate for', function() {
         it('equal scores up to 30', function(playerOne, playerTwo, scorePlayerOne, scorePlayerTwo, expectedScoring) {
             //arrange
             let game = new TennisGame(playerOne, playerTwo);
-            setScores(game, scorePlayerOne, scorePlayerTwo);
+            GameSetupHelper.setScoreForGame(game, scorePlayerOne, scorePlayerTwo);
 
             //act
             let result = game.getScoring();
@@ -24,7 +25,7 @@ describe('scoring is accurate for', function() {
         it('equal scores from 40 up', function(playerOne, playerTwo, scorePlayerOne, scorePlayerTwo, expectedScoring) {
             //arrange
             let game = new TennisGame(playerOne, playerTwo);
-            setScores(game, scorePlayerOne, scorePlayerTwo);
+            GameSetupHelper.setScoreForGame(game, scorePlayerOne, scorePlayerTwo);
 
             //act
             let result = game.getScoring();
@@ -48,7 +49,7 @@ describe('scoring is accurate for', function() {
         it('one player has more score up to 40', function(playerOne, playerTwo, scorePlayerOne, scorePlayerTwo, expectedScoring) {
             //arrange
             let game = new TennisGame(playerOne, playerTwo);
-            setScores(game, scorePlayerOne, scorePlayerTwo);
+            GameSetupHelper.setScoreForGame(game, scorePlayerOne, scorePlayerTwo);
 
             //act
             let result = game.getScoring();
@@ -66,7 +67,7 @@ describe('scoring is accurate for', function() {
         it('one player has more score above 40 (but game not finished yet)', function(playerOne, playerTwo, scorePlayerOne, scorePlayerTwo, expectedScoring) {
             //arrange
             let game = new TennisGame(playerOne, playerTwo);
-            setScores(game, scorePlayerOne, scorePlayerTwo);
+            GameSetupHelper.setScoreForGame(game, scorePlayerOne, scorePlayerTwo);
 
             //act
             let result = game.getScoring();
@@ -74,13 +75,4 @@ describe('scoring is accurate for', function() {
             //assert
             expect(result).toBe(expectedScoring);
         });
-
-    function setScores(game: TennisGame, scorePlayerOne: number, scorePlayerTwo: number) {
-        for (let i = 0; i < scorePlayerOne; i++) {
-            game.ballForPlayerOne();
-        }
-        for (let i = 0; i < scorePlayerTwo; i++) {
-            game.ballForPlayerTwo();
-        }
-    }
 });
