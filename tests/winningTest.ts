@@ -26,6 +26,11 @@ describe('winning status is determined correctly', function() {
         });
 
     using('A', 'B', 4, 0, true, 'A won').
+    using('A', 'B', 5, 3, true, 'A won').
+    using('A', 'B', 14, 12, true, 'A won').
+    using('A', 'B', 2, 4, true, 'B won').
+    using('A', 'B', 6, 8, true, 'B won').
+    using('A', 'B', 11, 13, true, 'B won').
         it('if game is won',
             (playerOne: string, playerTwo: string, scorePlayerOne: number, scorePlayerTwo: number, expectedWinStatus: boolean, expectedWinMessage: string) => 
         {
