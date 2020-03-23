@@ -1,6 +1,9 @@
 export class TennisGame {
+    scoreMap = [
+        "love"
+    ]
 
     public getScoring(): string {
-        return "love-all";
+        return `${this.scoreMap[0]}-all`;
     }
 }
