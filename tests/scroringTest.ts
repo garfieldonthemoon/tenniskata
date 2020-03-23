@@ -3,12 +3,12 @@ import { using } from "jasmine-test-cases";
 
 describe('scoring is accurate for', function() {
     using(0, 0, 'love-all').
-    using(15, 15, 'fifteen-all').
-    using(30, 30, 'thirty-all').
-        it('equal scores up to 30', function(scorePlayerLeft, scorePlayerRight, expectedScoring) {
+    using(1, 1, 'fifteen-all').
+    using(2, 2, 'thirty-all').
+        it('equal scores up to 30', function(scorePlayerOne, scorePlayerTwo, expectedScoring) {
             //arrange
             let game = new TennisGame();
-            game.setScorePlayerLeft(scorePlayerLeft);
+            setScores(game, scorePlayerOne, scorePlayerTwo);
 
             //act
             let result = game.getScoring();
@@ -17,11 +17,11 @@ describe('scoring is accurate for', function() {
             expect(result).toBe(expectedScoring);
         });
 
-        using(40, 40, 'deuce').
-            it('equal scores from 40 up', function(scorePlayerLeft, scorePlayerRight, expectedScoring) {
+        using(3, 3, 'deuce').
+            it('equal scores from 40 up', function(scorePlayerOne, scorePlayerTwo, expectedScoring) {
                 //arrange
                 let game = new TennisGame();
-                game.setScorePlayerLeft(scorePlayerLeft);
+                setScores(game, scorePlayerOne, scorePlayerTwo);
 
                 //act
                 let result = game.getScoring();
@@ -29,4 +29,13 @@ describe('scoring is accurate for', function() {
                 //assert
                 expect(result).toBe(expectedScoring);
             });
+
+    function setScores(game: TennisGame, scorePlayerOne: number, scorePlayerTwo: number) {
+        for (let i = 0; i < scorePlayerOne; i++) {
+            game.ballForPlayerOne();
+        }
+        for (let i = 0; i < scorePlayerTwo; i++) {
+            game.ballForPlayerTwo();
+        }
+    }
 });

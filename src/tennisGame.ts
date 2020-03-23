@@ -1,23 +1,24 @@
 export class TennisGame {
-    scoreMap: { [id: number]: string } = {
-        0: "love",
-        15: "fifteen",
-        30: "thirty"
-    };
-    scorePlayerLeft: number;
-    scorePlayerRight: number;
+    scoreMap = [
+        "love",
+        "fifteen",
+        "thirty",
+        "fourty"
+    ];
+    scorePlayerOne: number = 0;
+    scorePlayerTwo: number = 0;
 
-    public setScorePlayerLeft(newScore: number) {
-        this.scorePlayerLeft = newScore;
+    public ballForPlayerOne() {
+        this.scorePlayerOne++;
     }
 
-    public setScorePlayerRight(newScore: number) {
-        this.scorePlayerRight = newScore;
+    public ballForPlayerTwo() {
+        this.scorePlayerTwo++;
     }
 
     public getScoring(): string {
-        if (this.scorePlayerLeft == 40)
+        if (this.scorePlayerOne == 3)
             return 'deuce';
-        return `${this.scoreMap[this.scorePlayerLeft]}-all`;
+        return `${this.scoreMap[this.scorePlayerOne]}-all`;
     }
 }
