@@ -34,6 +34,11 @@ describe('scoring is accurate for', function() {
         });
 
     using(1, 0, 'fifteen-love').
+    using(2, 0, 'thirty-love').
+    using(3, 0, 'fourty-love').
+    using(2, 1, 'thirty-fifteen').
+    using(3, 1, 'fourty-fifteen').
+    using(3, 2, 'fourty-thirty').
         it('one player has more score up to 40', function(scorePlayerOne, scorePlayerTwo, expectedScoring) {
             //arrange
             let game = new TennisGame();
