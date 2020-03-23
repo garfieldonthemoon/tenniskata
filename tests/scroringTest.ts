@@ -19,6 +19,8 @@ describe('scoring is accurate for', function() {
 
         using(3, 3, 'deuce').
         using(4, 4, 'deuce').
+        using(24, 24, 'deuce').
+        using(249, 249, 'deuce').
             it('equal scores from 40 up', function(scorePlayerOne, scorePlayerTwo, expectedScoring) {
                 //arrange
                 let game = new TennisGame();
