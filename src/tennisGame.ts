@@ -16,6 +16,8 @@ export class TennisGame {
     }
 
     public getScoring(): string {
+        if (this.scorePlayerLeft == 40)
+            return 'deuce';
         return `${this.scoreMap[this.scorePlayerLeft]}-all`;
     }
 }

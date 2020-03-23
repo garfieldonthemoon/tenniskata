@@ -16,4 +16,17 @@ describe('scoring is accurate for', function() {
             //assert
             expect(result).toBe(expectedScoring);
         });
+
+        using(40, 40, 'deuce').
+            it('equal scores from 40 up', function(scorePlayerLeft, scorePlayerRight, expectedScoring) {
+                //arrange
+                let game = new TennisGame();
+                game.setScorePlayerLeft(scorePlayerLeft);
+
+                //act
+                let result = game.getScoring();
+
+                //assert
+                expect(result).toBe(expectedScoring);
+            });
 });
