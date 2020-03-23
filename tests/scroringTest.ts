@@ -17,21 +17,21 @@ describe('scoring is accurate for', function() {
             expect(result).toBe(expectedScoring);
         });
 
-        using(3, 3, 'deuce').
-        using(4, 4, 'deuce').
-        using(24, 24, 'deuce').
-        using(249, 249, 'deuce').
-            it('equal scores from 40 up', function(scorePlayerOne, scorePlayerTwo, expectedScoring) {
-                //arrange
-                let game = new TennisGame();
-                setScores(game, scorePlayerOne, scorePlayerTwo);
+    using(3, 3, 'deuce').
+    using(4, 4, 'deuce').
+    using(24, 24, 'deuce').
+    using(249, 249, 'deuce').
+        it('equal scores from 40 up', function(scorePlayerOne, scorePlayerTwo, expectedScoring) {
+            //arrange
+            let game = new TennisGame();
+            setScores(game, scorePlayerOne, scorePlayerTwo);
 
-                //act
-                let result = game.getScoring();
+            //act
+            let result = game.getScoring();
 
-                //assert
-                expect(result).toBe(expectedScoring);
-            });
+            //assert
+            expect(result).toBe(expectedScoring);
+        });
 
     function setScores(game: TennisGame, scorePlayerOne: number, scorePlayerTwo: number) {
         for (let i = 0; i < scorePlayerOne; i++) {
