@@ -28,10 +28,11 @@ export class TennisGame {
             return this.scorePlayerOne > this.scorePlayerTwo 
                 ? this.getScoreDescriptionForNonEqualScores(this.scorePlayerOne, this.scorePlayerTwo, this.playerOne)
                 : this.getScoreDescriptionForNonEqualScores(this.scorePlayerTwo, this.scorePlayerOne, this.playerTwo);
+        } else {
+            return this.scorePlayerOne >= 3
+                ? 'deuce'
+                : `${this.scoreMap[this.scorePlayerOne]}-all`;
         }
-        if (this.scorePlayerOne >= 3)
-            return 'deuce';
-        return `${this.scoreMap[this.scorePlayerOne]}-all`;
     }
 
     private getScoreDescriptionForNonEqualScores(higherScore: number, lowerScore: number, higherScorePlayer: string): string {
