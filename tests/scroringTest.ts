@@ -33,6 +33,19 @@ describe('scoring is accurate for', function() {
             expect(result).toBe(expectedScoring);
         });
 
+    using(1, 0, 'fifteen-love').
+        it('one player has more score up to 40', function(scorePlayerOne, scorePlayerTwo, expectedScoring) {
+            //arrange
+            let game = new TennisGame();
+            setScores(game, scorePlayerOne, scorePlayerTwo);
+
+            //act
+            let result = game.getScoring();
+
+            //assert
+            expect(result).toBe(expectedScoring);
+        });
+
     function setScores(game: TennisGame, scorePlayerOne: number, scorePlayerTwo: number) {
         for (let i = 0; i < scorePlayerOne; i++) {
             game.ballForPlayerOne();
